@@ -1,0 +1,19 @@
+{
+	"name": "jquery.dragscrollable",
+	"version": "1.0",
+	"description": "Jquery library that adds the ability to manage elements scroll by dragging one or more of its descendant elements.",
+	"author": "Miquel Herrera",
+	"main": "dragscrollable.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mvlandys/jquery.dragscrollable"
+	},
+	"keywords": [
+		"jquery",
+		"scrollable",
+	],
+	"dependencies": {
+		"jquery": "1.11.3",
+	},
+	"license": "MIT"
+}
