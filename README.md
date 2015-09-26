@@ -23,6 +23,10 @@ respond to the drag events.
 
 > Prevents the event to propagate further effectivey dissabling other default actions. Defaults to true
 
+**allowY**
+
+> Allow draggscrolling Y-axis? Defaults to true
+
 ###usage examples:
 
 To add the scroll by drag to the element id=viewport when dragging its first child accepting any propagated events
