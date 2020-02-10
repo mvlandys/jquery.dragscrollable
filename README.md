@@ -27,6 +27,10 @@ respond to the drag events.
 
 > Allow draggscrolling Y-axis? Defaults to true
 
+**which**
+
+> Select which mouse button do the scroll.(1: left, 2: middle, 3: right) Defaults to 1
+
 ###usage examples:
 
 To add the scroll by drag to the element id=viewport when dragging its first child accepting any propagated events

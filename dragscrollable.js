@@ -1,8 +1,9 @@
 /*
  * jQuery dragscrollable Plugin
- * version: 1.1 (31-May-2016)
+ * version: 1.2 (09-Feb-2020)
  * Copyright (c) 2009 Miquel Herrera
  * Modified 2016 by Alexander Steinhöfer
+ * Modified 2020 by Bilal Bagdad
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -32,6 +33,12 @@
  *  preventDefault       | Prevents the event to propagate further effectivey
  *                       | dissabling other default actions. Defaults to true
  * ------------------------------------------------------------------------
+ *  which                | Sets the mouse button to scroll
+ *                       | 1: left click
+ *                       | 2: middle click
+ *                       | 3: right click
+ *                       | defaults to 1
+ * ------------------------------------------------------------------------
  *
  *  usage examples:
  *
@@ -54,6 +61,7 @@ $.fn.dragscrollable = function( options ){
       dragSelector:'>:first',
       acceptPropagatedEvent: true,
       preventDefault: true,
+      which: 1,
       // Hovav:
       allowY: true
   }, options || {});
@@ -97,8 +105,8 @@ $.fn.dragscrollable = function( options ){
     /* ==========================================================
         Mouse */
     mouseDownHandler : function(event) {
-      // mousedown, left click, check propagation
-      if (event.which != 1 || (!event.data.acceptPropagatedEvent && event.target != this)){
+      // mousedown, selected click, check propagation
+      if (event.which != event.data.which || (!event.data.acceptPropagatedEvent && event.target != this)){
         return false;
       }
 
@@ -136,7 +144,8 @@ $.fn.dragscrollable = function( options ){
     var data = {
       scrollable : $(this),
       acceptPropagatedEvent : settings.acceptPropagatedEvent,
-      preventDefault : settings.preventDefault
+      preventDefault : settings.preventDefault,
+      which: settings.which
     };
     // Set mouse initiating event on the desired descendant
     $(this).find(settings.dragSelector).bind('mousedown',  data, dragscroll.mouseDownHandler);
